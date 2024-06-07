@@ -1,0 +1,96 @@
+# main_gui.kv
+
+<PreferencesScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 10
+        spacing: 10
+        Label:
+            text: 'Preferences'
+            font_size: 32
+            size_hint_y: None
+            height: self.texture_size[1]
+        Button:
+            text: 'Save Preferences'
+            size_hint_y: None
+            height: 50
+            on_release: root.save_preferences()
+        Button:
+            text: 'Load Preferences'
+            size_hint_y: None
+            height: 50
+            on_release: root.load_preferences()
+        Label:
+            id: status
+            text: ''
+            size_hint_y: None
+            height: self.texture_size[1]
+
+<FeedScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 10
+        spacing: 10
+        Label:
+            text: 'Feed'
+            font_size: 32
+            size_hint_y: None
+            height: self.texture_size[1]
+        ScrollView:
+            GridLayout:
+                id: feed_layout
+                cols: 1
+                size_hint_y: None
+                height: self.minimum_height
+
+<SearchScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 10
+        spacing: 10
+        Label:
+            text: 'Search'
+            font_size: 32
+            size_hint_y: None
+            height: self.texture_size[1]
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: 50
+            TextInput:
+                id: search_input
+                hint_text: 'Enter search term'
+            Button:
+                text: 'Search'
+                on_release: root.perform_search()
+        ScrollView:
+            GridLayout:
+                id: search_layout
+                cols: 1
+                size_hint_y: None
+                height: self.minimum_height
+
+<MainApp>:
+    BoxLayout:
+        orientation: 'vertical'
+        BoxLayout:
+            size_hint_y: None
+            height: 50
+            Button:
+                text: 'Preferences'
+                on_release: app.root.current = 'preferences'
+            Button:
+                text: 'Feed'
+                on_release: app.root.current = 'feed'
+            Button:
+                text: 'Search'
+                on_release: app.root.current = 'search'
+        ScreenManager:
+            id: screen_manager
+            PreferencesScreen:
+                name: 'preferences'
+            FeedScreen:
+                name: 'feed'
+            SearchScreen:
+                name: 'search'
+
