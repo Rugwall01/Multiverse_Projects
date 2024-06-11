@@ -4,7 +4,7 @@ import subprocess
 import logging
 import os
 
-# Configure logging
+
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
@@ -20,7 +20,7 @@ schedule.every(15).minutes.do(run_scrapy_spider)
 
 if __name__ == '__main__':
     logger.info("Scheduler started. Running Scrapy spider every 15 minutes.")
-    run_scrapy_spider()  # Run once at the start
+    run_scrapy_spider()  
     while True:
         schedule.run_pending()
         time.sleep(1)
