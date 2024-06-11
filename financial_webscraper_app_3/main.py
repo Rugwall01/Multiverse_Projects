@@ -10,7 +10,7 @@ from frontend.preferences import PreferencesScreen
 from frontend.feed import FeedScreen
 from frontend.search import SearchScreen
 
-# Configure logging
+
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
@@ -70,7 +70,6 @@ def start_kivy_app():
     MainApp().run()
 
 if __name__ == '__main__':
-    # Start the Flask server, scheduler, and Kivy app in separate processes
     flask_process = multiprocessing.Process(target=start_flask_server)
     scheduler_process = multiprocessing.Process(target=start_scheduler)
     kivy_process = multiprocessing.Process(target=start_kivy_app)
