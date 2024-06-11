@@ -7,7 +7,7 @@ from frontend.preferences import PreferencesScreen
 from frontend.feed import FeedScreen
 from frontend.search import SearchScreen
 
-# Load the .kv file and add a debug statement
+
 kv_file_path = 'frontend/main_gui.kv'
 Builder.load_file(kv_file_path)
 print(f"Loaded .kv file: {kv_file_path}")
